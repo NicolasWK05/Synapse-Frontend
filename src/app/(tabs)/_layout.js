@@ -1,6 +1,12 @@
 import { Tabs } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { colors } from '../../constants/theme';
+import { dms } from '../../constants/mockData';
+
+const unreadDMs = dms.reduce((n, d) => n + (d.unread ?? 0), 0);
+const icon = (on, off) => ({ color, size, focused }) => (
+  <Ionicons name={focused ? on : off} size={size} color={color} />
+);
 
 export default function TabsLayout() {
   return (
@@ -12,26 +18,17 @@ export default function TabsLayout() {
         tabBarInactiveTintColor: colors.textMuted,
       }}
     >
+      <Tabs.Screen name="index" options={{ title: 'Servers', tabBarIcon: icon('home', 'home-outline') }} />
       <Tabs.Screen
-        name="index"
+        name="messages"
         options={{
           title: 'Messages',
-          tabBarBadge: 7,
+          tabBarIcon: icon('chatbubble', 'chatbubble-outline'),
+          tabBarBadge: unreadDMs || undefined,
           tabBarBadgeStyle: { backgroundColor: colors.danger, color: '#fff' },
-          tabBarIcon: ({ color, size, focused }) => (
-            <Ionicons name={focused ? 'chatbubble' : 'chatbubble-outline'} size={size} color={color} />
-          ),
         }}
       />
-      <Tabs.Screen
-        name="settings"
-        options={{
-          title: 'Settings',
-          tabBarIcon: ({ color, size, focused }) => (
-            <Ionicons name={focused ? 'settings' : 'settings-outline'} size={size} color={color} />
-          ),
-        }}
-      />
+      <Tabs.Screen name="settings" options={{ title: 'Settings', tabBarIcon: icon('settings', 'settings-outline') }} />
     </Tabs>
   );
 }
