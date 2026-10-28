@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import Avatar from '../../components/Avatar';
 import { colors } from '../../constants/theme';
-import { me } from '../../constants/mockData';
+import { useAuth } from '../../context/AuthContext';
 
 const sections = [
   {
@@ -62,6 +62,8 @@ function Row({ item, last, on, onToggle }) {
 }
 
 export default function SettingsScreen() {
+  const { session, signOut } = useAuth();
+  const me = { id: 'me', name: session?.username ?? 'You', handle: (session?.username ?? 'you').toLowerCase(), color: '#5865f2', status: 'online' };
   // Local UI state only; nothing is persisted yet.
   const [toggles, setToggles] = useState({ notifications: true, developer: false });
   const flip = (key) => setToggles((t) => ({ ...t, [key]: !t[key] }));
@@ -100,7 +102,7 @@ export default function SettingsScreen() {
         ))}
 
         <View style={[styles.group, { marginTop: 24 }]}>
-          <Pressable style={({ pressed }) => [styles.row, pressed && { backgroundColor: colors.bgHover }]}>
+          <Pressable onPress={signOut} style={({ pressed }) => [styles.row, pressed && { backgroundColor: colors.bgHover }]}>
             <Ionicons name="log-out-outline" size={22} color={colors.danger} />
             <Text style={[styles.label, { color: colors.danger }]}>Log out</Text>
           </Pressable>

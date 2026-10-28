@@ -1,0 +1,15 @@
+## Getting started
+### Requirements
+- NodeJS
+- NPM
+- Android SDK (Android only)
+- Android Emulator (Recommended)
+
+### Run
+```powershell
+npx expo install
+npx expo start
+```
+
+### Project diagrams
+See [docs/project-diagrams.md](./docs/project-diagrams.md) for the application flow and use-case diagrams, including the assumed backend API boundary.

@@ -4,7 +4,7 @@ export const users = {
   me,
   u1: { id: 'u1', name: 'Mira', color: '#eb459e', status: 'online' },
   u2: { id: 'u2', name: 'Jonas', color: '#f0b132', status: 'idle' },
-  u3: { id: 'u3', name: 'Marcus', color: '#23a55a', status: 'online' },
+  u3: { id: 'u3', name: 'Sofie', color: '#23a55a', status: 'online' },
   u4: { id: 'u4', name: 'Anders', color: '#3ba5d9', status: 'offline' },
   u5: { id: 'u5', name: 'Lukas', color: '#9b59b6', status: 'dnd' },
   u6: { id: 'u6', name: 'Ida', color: '#e67e22', status: 'online' },
@@ -102,7 +102,7 @@ export function findChannel(channelId) {
 // ---------- Direct messages ----------
 export const dms = [
   { id: 'd1', members: ['u1'], last: "Nice, post a screenshot when it's ready!", time: '10:13', unread: 2 },
-  { id: 'd2', members: ['u2', 'u3', 'u5'], name: 'Dungeons & Dragons', last: 'Marcus: Saturday works for me', time: '09:52', unread: 5 },
+  { id: 'd2', members: ['u2', 'u3', 'u5'], name: 'Weekend plans', last: 'Sofie: Saturday works for me', time: '09:52', unread: 5 },
   { id: 'd3', members: ['u2'], last: 'Let me know if you need a hand', time: '09:40' },
   { id: 'd4', members: ['u3'], last: 'Haha exactly 😂', time: 'Yesterday' },
   { id: 'd5', members: ['u5'], last: 'Can you send me the link?', time: 'Mon' },
@@ -149,8 +149,8 @@ const dmMessages = {
     m('x3', 'u1', 'Today', '10:13 AM', 'Also what are you building it with?'),
   ],
   d2: [
-    m('y1', 'u2', 'Today', '9:40 AM', 'DND this weekend?'),
-    m('y2', 'u5', 'Today', '9:44 AM', 'I can do Saturday, but not Sunday.'),
+    m('y1', 'u2', 'Today', '9:40 AM', 'So what are we doing this weekend?'),
+    m('y2', 'u5', 'Today', '9:44 AM', 'Hiking if the weather holds up 🥾'),
     m('y3', 'u3', 'Today', '9:52 AM', 'Saturday works for me', { reactions: [{ emoji: '👍', count: 2 }] }),
   ],
 };

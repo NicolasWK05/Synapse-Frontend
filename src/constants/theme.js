@@ -1,5 +1,5 @@
-// Change theme of the whole app
-const THEME_NAME = 'stoat';
+// Change THEME_NAME to 'discord' or 'stoat' to re-skin the whole app.
+const THEME_NAME = 'discord';
 
 const themes = {
   discord: {
